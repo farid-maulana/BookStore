@@ -41,4 +41,51 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Validation role user for the Admin
+     * 
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        if($this->role == 'admin')
+        { 
+            return true; 
+        } 
+        else 
+        { 
+            return false; 
+        }
+    }
+
+    /**
+     * Validation role user for the User
+     * 
+     * @return boolean
+     */
+    public function isUser()
+    {
+        if($this->role == 'user')
+        { 
+            return true; 
+        } 
+        else 
+        { 
+            return false; 
+        }
+    }
+
+    /**
+     * Validation roles for the User
+     * 
+     * @return boolean
+     */
+    public function hasRole($role) {
+    switch ($role) {
+        case 'admin': return \Auth::user()->isAdmin();
+        case 'user': return \Auth::user()->isUser();
+    }
+    return false;
+}
 }

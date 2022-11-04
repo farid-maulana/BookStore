@@ -17,14 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/master', function () {
-    return view('layouts.admin.master');
-});
+Route::redirect('/', 'login');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('categories', CategoryController::class);
-Route::resource('books', BookController::class);
-Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('books', BookController::class);
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+});
