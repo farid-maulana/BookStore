@@ -26,8 +26,8 @@
                         <span>Manage Kategori</span>
                     </a>
                 </li>
-                <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::segment(1) === 'books' ? 'active' : '' }}">
+                    <a href="{{ route('books.index') }}" class='sidebar-link'>
                         <i class="bi bi-journal-bookmark"></i>
                         <span>Manage Buku</span>
                     </a>
