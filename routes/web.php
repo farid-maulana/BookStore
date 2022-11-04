@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('categories', CategoryController::class);
 Route::resource('books', BookController::class);
+Route::get('users', [UserController::class, 'index'])->name('users.index');

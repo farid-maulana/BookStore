@@ -32,8 +32,8 @@
                         <span>Manage Buku</span>
                     </a>
                 </li>
-                <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::segment(1) === 'users' ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class='sidebar-link'>
                         <i class="bi bi-people"></i>
                         <span>List User Terdaftar</span>
                     </a>
